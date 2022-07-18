@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Runn : MonoBehaviour
+public class Run : MonoBehaviour
 {
     public float moveSpeed = 10f;
 
@@ -103,7 +103,7 @@ public class Runn : MonoBehaviour
             case 0://向前生成地面
                 lastFloor = floors[floors.Count - 1];
                 firstFloor = floors[0];
-                if (lastFloor.position.z < transform.position.z + 20)
+                if (lastFloor.position.z < transform.position.z + 100)
                 {
                     Transform prefeb = prefebFloor[Random.Range(0, prefebFloor.Count)];
                     Transform newFloor = Instantiate(prefeb, null);
@@ -111,7 +111,7 @@ public class Runn : MonoBehaviour
                     floors.Add(newFloor);
                 }
                 
-                if (firstFloor.position.z < transform.position.z - 20)
+                if (firstFloor.position.z < transform.position.z - 15)
                 {
                     floors.RemoveAt(0);
                     Destroy(firstFloor.gameObject);
@@ -121,14 +121,14 @@ public class Runn : MonoBehaviour
             case 1://向后生成地面
                 lastFloor = floors[0];
                 firstFloor = floors[floors.Count - 1];
-                if (firstFloor.position.z > transform.position.z - 20)
+                if (firstFloor.position.z > transform.position.z - 15)
                 {
                     Transform prefeb = prefebFloor[Random.Range(0, prefebFloor.Count)];
                     Transform newFloor = Instantiate(prefeb, null);
                     newFloor.position = (firstFloor.position + new Vector3(0, 0, -20));
                     floors.Add(newFloor);
                 }
-                if (lastFloor.position.z > transform.position.z + 20)
+                if (lastFloor.position.z > transform.position.z + 15)
                 {
                     floors.RemoveAt(0);
                     Destroy(lastFloor.gameObject);
