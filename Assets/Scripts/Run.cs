@@ -6,13 +6,15 @@ public class Run : MonoBehaviour
 {
     public float moveSpeed = 10f;
 
-    private int State;//½ÇÉ«×´Ì¬
+    private int State;//è§’è‰²çŠ¶æ€
 
-    private int oldState = 0;//Ç°Ò»´Î½ÇÉ«µÄ×´Ì¬
+    private int oldState = 0;//å‰ä¸€æ¬¡è§’è‰²çš„çŠ¶æ€
 
-    private int UP = 0;//½ÇÉ«×´Ì¬ÏòÇ°
+    private int UP = 0;//è§’è‰²çŠ¶æ€å‘å‰
 
-    private int DOWN = 1;//½ÇÉ«×´Ì¬Ïòºó
+    private int DOWN = 1;//è§’è‰²çŠ¶æ€å‘å
+
+
 
     public List<Transform> prefebFloor;
     public List<Transform> floors;
@@ -26,6 +28,8 @@ public class Run : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
         if (Input.GetAxis("Vertical") > 0)
 
         {
@@ -33,6 +37,7 @@ public class Run : MonoBehaviour
 
             CreatDestroyFloor(UP);
 
+            
         }
 
         else if (Input.GetAxis("Vertical") < 0)
@@ -43,6 +48,7 @@ public class Run : MonoBehaviour
             CreatDestroyFloor(DOWN);
         }
 
+        
         // float H = Input.GetAxis("Horizontal");
         //float V = Input.GetAxis("Vertical");
 
@@ -61,37 +67,49 @@ public class Run : MonoBehaviour
     void setState(int currState)
 
     {
-        Vector3 transformValue = new Vector3();//¶¨ÒåÆ½ÒÆÏòÁ¿
+        Vector3 transformValue = new Vector3();//å®šä¹‰å¹³ç§»å‘é‡
 
         int rotateValue = (currState - State) * 180;
+
+
+
+        //transform.GetComponent<Animation>().Play("cycle");
+
+
+        //transform.GetComponent<Animation>().Play("cyclerig");
 
         switch (currState)
 
         {
-            case 0://ÏòÇ°ÒÆ¶¯
+            case 0://å‘å‰ç§»åŠ¨
 
                 transformValue = Vector3.forward * Time.deltaTime * moveSpeed;
 
+               
+
                 break;
 
-            case 1://ÏòºóÒÆ¶¯
+            case 1://å‘åç§»åŠ¨
 
                 transformValue = Vector3.back * Time.deltaTime * moveSpeed;
 
                 
+               
 
                 break;
 
         }
 
-        transform.Rotate(Vector3.up, rotateValue);//Ğı×ª
+        transform.Rotate(Vector3.up, rotateValue);//æ—‹è½¬
 
-        transform.Translate(transformValue, Space.World);//Æ½ÒÆ
+        transform.Translate(transformValue, Space.World);//å¹³ç§»
 
-        oldState = State;//¸³Öµ£¬·½±ãÏÂÒ»´Î¼ÆËã
+        oldState = State;//èµ‹å€¼ï¼Œæ–¹ä¾¿ä¸‹ä¸€æ¬¡è®¡ç®—
 
-        State = currState;//¸³Öµ£¬·½±ãÏÂÒ»´Î¼ÆËã
+        State = currState;//èµ‹å€¼ï¼Œæ–¹ä¾¿ä¸‹ä¸€æ¬¡è®¡ç®—
 
+        
+    
     }
     void CreatDestroyFloor(int currState)
     {
@@ -100,7 +118,7 @@ public class Run : MonoBehaviour
 
         switch (currState)
         {
-            case 0://ÏòÇ°Éú³ÉµØÃæ
+            case 0://å‘å‰ç”Ÿæˆåœ°é¢
                 lastFloor = floors[floors.Count - 1];
                 firstFloor = floors[0];
                 if (lastFloor.position.z < transform.position.z + 100)
@@ -110,7 +128,7 @@ public class Run : MonoBehaviour
                     newFloor.position = (lastFloor.position + new Vector3(0, 0, 20));
                     floors.Add(newFloor);
                 }
-                
+
                 if (firstFloor.position.z < transform.position.z - 15)
                 {
                     floors.RemoveAt(0);
@@ -118,7 +136,7 @@ public class Run : MonoBehaviour
                 }
                 break;
 
-            case 1://ÏòºóÉú³ÉµØÃæ
+            case 1://å‘åç”Ÿæˆåœ°é¢
                 lastFloor = floors[0];
                 firstFloor = floors[floors.Count - 1];
                 if (firstFloor.position.z > transform.position.z - 15)
@@ -135,7 +153,7 @@ public class Run : MonoBehaviour
                 }
                 break;
         }
-        
+
     }
 
 }
