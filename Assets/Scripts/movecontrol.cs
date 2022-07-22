@@ -24,6 +24,6 @@ public class movecontrol : MonoBehaviour
 
     void UpdateAnim()
     {
-        animator.SetTrigger("start");
+        animator.SetBool("isMoving",true);
     }
 }
