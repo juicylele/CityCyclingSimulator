@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Run : MonoBehaviour
 {
+    public Slider slider;
+
     public float moveSpeed = 10f;
 
     private int State;//角色状态
@@ -63,6 +66,10 @@ public class Run : MonoBehaviour
         //    transform.Translate(new Vector3(0, 0, V) * Time.deltaTime * moveSpeed, Space.World);
         //}
 
+    }
+    public void speed()
+    {
+        moveSpeed = slider.value;
     }
     void setState(int currState)
 

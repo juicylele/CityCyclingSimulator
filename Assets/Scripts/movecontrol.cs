@@ -19,11 +19,19 @@ public class movecontrol : MonoBehaviour
         {
             UpdateAnim();
         }
-            
+        else if (Input.GetAxis("Vertical") == 0)
+        {
+            UpdateAnim2();
+        }
     }
 
     void UpdateAnim()
     {
         animator.SetBool("isMoving",true);
+    }
+
+    void UpdateAnim2()
+    {
+        animator.SetBool("isMoving", false);
     }
 }
