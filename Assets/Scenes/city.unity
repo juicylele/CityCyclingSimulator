@@ -581,7 +581,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'speed
 
-    10                 100'
+    1                    10'
 --- !u!222 &807622805
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -675,10 +675,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1495140652}
   m_HandleRect: {fileID: 886201506}
   m_Direction: 0
-  m_MinValue: 10
-  m_MaxValue: 100
+  m_MinValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9479,8 +9479,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9115584344987802789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.39, y: -1.17, z: -3.45}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: -3.5, y: -1.17, z: -3.45}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 543450653622226361}
