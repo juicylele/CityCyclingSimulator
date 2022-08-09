@@ -1,5 +1,5 @@
 # CityCyclingSimulator
-you can cycle on the city road using ↑/↓
+you can cycle on the city road using ↑
 
 change velocity via the slider.
 
